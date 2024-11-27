@@ -26,3 +26,34 @@ URL
 .phpMyAdmin:http//localhost:8080/
 
 #ER図
+users
+---------------------------------
+| id (PK)          | bigint     |◀────┐
+| name             | varchar    |     │
+| email            | varchar    |     │
+| password         | varchar    |     │
+| created_at       | timestamp  |     │
+| updated_at       | timestamp  |     │
+---------------------------------     │
+                                      │
+weight_target                        (1対1)
+---------------------------------     │
+| id (PK)          | bigint     |◀───┘
+| user_id (FK)     | bigint     |─────┐
+| target_weight    | decimal    |     │
+| created_at       | timestamp  |     │
+| updated_at       | timestamp  |     │
+---------------------------------     │
+                                      │
+weight_logs                          (1対多)
+---------------------------------     │
+| id (PK)          | bigint     |◀───┘
+| user_id (FK)     | bigint     |─────┐
+| date             | date       |     │
+| weight           | decimal    |     │
+| calories         | int        |     │
+| exercise_time    | time       |     │
+| exercise_content | text       |     │
+| created_at       | timestamp  |     │
+| updated_at       | timestamp  |     │
+---------------------------------     │
